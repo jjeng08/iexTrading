@@ -1,11 +1,7 @@
-
 $(document).ready(function () {
+/*BACKEND FUNCTIONS*/
 
-	/*STARTING DATA*/
-	/*Default Stock Options*/
-	const stockList = ["DIS", "TSLA", "MSFT", "AAPL"];
-
-	/*List of All IEX Stock Symbols*/
+	/*FULL SYMBOL LIST*/
 	const symbolList = [];
 
 	function getSymbols() {
@@ -22,9 +18,16 @@ $(document).ready(function () {
 
 	getSymbols();
 
-	/*BUTTONS*/
+	/*LOCAL STORAGE*/
+	let stockList = ["DIS", "TSLA", "MSFT", "AAPL"];							//default list of stocks
+	try {
+		const storedStock = JSON.parse(localStorage.getItem("stockStorage"));	//grabs local storage info
+		stockList = storedStock || stockList; 									// handles null case
+	} catch (err) {
+		localStorage.setItem("stockStorage", stockList);						//rewrites glitchy local storage values.
+	}
 
-	/*Render Buttons*/
+	/*RENDER FUNCTION*/
 	function render() {
 		$("#buttons").empty();
 		for (let i = 0; i < stockList.length; i++) {
@@ -36,25 +39,47 @@ $(document).ready(function () {
 		}
 	}
 
+/*USER-VISIBLE FUNCTIONS*/	
 
-	/*Create New Buttons*/
+	/*ADD BUTTON*/
 	$("#createStockBtn").on("click", createButton);
 	function createButton(event) {
 		event.preventDefault();
 		const newStock = $("#stockInput").val().trim().toUpperCase();
-			if (symbolList.indexOf(newStock) <0) {
-				alert("Error: Stock symbol not found.");
-			}
-			else {
-				stockList.push(newStock);
-				$("#stockInput").val("");
-				render();
-			}
-
+		if (symbolList.indexOf(newStock) < 0) {
+			alert("Error: Stock symbol not found.");
+			$('#stockInput').val("");
+		}
+		else if (stockList.includes(newStock)) {
+			alert("Error: Symbol already exists.");
+			$('#stockInput').val("");
+		}
+		else {
+			stockList.push(newStock);
+			$("#stockInput").val("");
+			localStorage.setItem("stockStorage", JSON.stringify(stockList));
+			render();
+		}
 	}
 
-	/*MAIN: DISPLAY*/
+	/*DELETE BUTTON*/
+	$("#deleteStockBtn").on("click", deleteButton);
+	function deleteButton(event) {
+		event.preventDefault();
+		const newStock = $("#stockInput").val().trim().toUpperCase();
+		if (stockList.includes(newStock)) {
+			let index = stockList.indexOf(newStock);
+			stockList.splice(index, 1);
+			$("#stockInput").val("");
+			render();
+			localStorage.setItem("stockStorage", JSON.stringify(stockList));
+		}
+		else {
+			alert("Error: Stock doesn't exists.");
+		}
+	}
 
+	/*DISPLAY BUTTONS*/
 	$("#buttons").on("click", ".button", displayInfo);
 	function displayInfo() {
 		$("#infoView").empty();
@@ -87,7 +112,6 @@ $(document).ready(function () {
 
 			newRow.append(prevClose, openPrice, latestPrice, week52High, week52Low);
 			tBody.append(newRow);
-
 		})
 
 		$.ajax({
@@ -102,18 +126,15 @@ $(document).ready(function () {
 		$.ajax({
 			url: `https://api.iextrading.com/1.0/stock/${stock}/news/last/10`,
 			method: 'GET'
-		}).then(function (response) { 				
+		}).then(function (response) {
 			const newsGroup = $("#newsGroup");
 			newsGroup.empty();
 			for (let i = 0; i < response.length; i++) {
-			$("#newsGroup").append(`<p><div>${response[i].datetime}: </div> <a target="_blank" href="${response[i].url}">${response[i].headline}</a></p>`).addClass("newsLink");
+				$("#newsGroup").append(`<p><div>${response[i].datetime}: </div> <a target="_blank" href="${response[i].url}">${response[i].headline}</a></p>`).addClass("newsLink");
 			}
 		});
 	}
 
-	/*VALIDATION*/
-
-
-	/*Initial Render*/
-	render();
+/*Initial Render*/
+render();
 });

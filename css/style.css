@@ -1,7 +1,12 @@
+/*GENERAL*/
 body{
 	background-color: #AA0505;
 }
-/*Top Banner*/
+col{
+	padding:0;
+}
+
+/*PRODUCT BANNER*/
 .title{
 	background-color: #AA0505;
 	font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -15,7 +20,7 @@ body{
 	letter-spacing:2px;
 }
 
-/*Search Bar*/
+/*SEARCH BAR*/
 .sectionTitle{
 	background-color:#FBCA03;
 	font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -28,7 +33,6 @@ body{
 	border-style:solid;
 	border-width:4px;
 	border-color:#FBCA03;
-	
 }
 
 fieldset {
@@ -38,7 +42,25 @@ fieldset {
 	margin-bottom:10px;
 }
 
-/*Array of Buttons*/
+.inputBtn {
+	border-style:outset;
+	border-width:1px;
+	border-radius: 3px;
+	height:32px;
+	font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	font-size: 16px;
+	color: #AA0505;
+	letter-spacing:1px;
+	background-color:#FBCA03;
+	border-color:#FBCA03;
+}
+
+/*SYMBOL BUTTONS*/
+.buttonBox{
+	display:flex;
+	justify-content: center;
+}
+
 .button{
 	border-style:outset;
 	border-width:1px;
@@ -53,13 +75,19 @@ fieldset {
 	width:60px;
 }
 
-
-#buttons{
-	text-align: center;
-	margin-bottom:15px;
+/*DATA DISPLAY*/
+input{
+	border-radius: 3px;
+	border-width:1px;
+	border-style: outset;
+	padding-left:10px;
+	width:200px;
+	font-size:16px;
+	height:32px;
+	background-color: #d6d6d6;
 }
 
-.sectionBox {
+.dataBox {
 	margin:20px;
 	text-align: center;
 	border-color:#FBCA03;
@@ -98,36 +126,11 @@ table{
 	background-color:#d6d6d6;
 }
 
-.logo{
-	/*will be styled later*/
-}
-
-.newsLink{
-	/*will be styled later*/
-}
-
-input{
-	border-radius: 3px;
-	border-width:1px;
-	border-style: outset;
-	padding-left:10px;
-	width:200px;
-	font-size:16px;
-	height:32px;
-	background-color: #d6d6d6;
-}
-
-#createStockBtn {
-	border-style:outset;
-	border-width:1px;
-	border-radius: 3px;
-	height:32px;
+#newsGroup{
 	font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 	font-size: 16px;
-	color: #AA0505;
+	color: Black;
 	letter-spacing:1px;
-	background-color:#FBCA03;
-	border-color:#FBCA03;
 }
 
 #companyName {
@@ -146,9 +149,45 @@ a{
 	letter-spacing:1px;
 }
 
-#newsGroup{
-	font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-	font-size: 16px;
-	color: Black;
-	letter-spacing:1px;
+
+
+/*Media Queries*/
+@media screen and (max-width:450px) {
+	.title{
+		font-size:24px;
+	}
+
+	.sectionTitle{
+		font-size:18px;
+		line-height:24px;
+	}
+
+	fieldset{
+		margin:0px;
+		padding:10px;
+	}
+
+	#stockInput{
+		font:12px;
+		height:24px;
+	}
+	.inputBtn, .button{
+		height:24px;
+		font-size:14px;
+	}
+
+	.logoBox, .dataBox, .newsBox{
+		margin:10px;
+	}
+
+	table{
+		font-size:12px;
+		
+	}
+	#newsGroup{
+		font-size:12px;
+	}
+	a{
+		font-size:12px;
+	}
 }

@@ -13,23 +13,34 @@
 </head>
 
 <body>
-
+	<!-- PAGE BANNER -->
 	<div class="row">
 		<div class="title">IEX Stock Compiler v.1.0</div>
 	</div>
-	<div class="row">
+
+	<!-- STOCK SELECTOR -->
+	<div class="row">	
 		<div class="col-md-12">
+			<!-- SEARCH BAR -->
 			<div class="sectionTitle">Search Stock Symbols</div>
 			<form id="stockForm">
 				<fieldset>
-					<input type="text" required id="stockInput" placeholder="Enter Symbol (ex: GOOG)">
-					<button id="createStockBtn">Add New Stock</button>
+					<button class="inputBtn" id="deleteStockBtn">Delete</button>
+					<input onkeyup="this.value = this.value.toUpperCase();" type="text" required id="stockInput" placeholder="Enter Symbol (ex: GOOG)">
+					<button class="inputBtn" id="createStockBtn">Add</button>
 				</fieldset>
 			</form>
-			<div id="buttons"></div>
+			<!-- STOCK BUTTONS -->
+			<div class="buttonBox">
+				<div id="buttons"></div>
+			</div>
 		</div>
 	</div>
+
+	<!-- DISPLAY SECTION -->
 	<div class="row">
+		
+		<!-- TITLE AND LOGO -->
 		<div class="col-md-3">
 			<div class="logoBox">
 				<div class="sectionTitle">Corporation</div>
@@ -37,9 +48,10 @@
 				<div id="imageView"></div>
 			</div>
 		</div>
+		<!-- STOCK DATA -->
 		<div class="col-md-9">
-			<div class="sectionBox">
-					<div class="sectionTitle">Stock Data</div>
+			<div class="dataBox">
+				<div class="sectionTitle">Stock Data</div>
 				<table class="table">
 					<thead>
 						<tr>
@@ -57,20 +69,16 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- NEWS BULLETIN -->
 	<div class="row">
 		<div class="col-md-12">
 			<div class="newsBox">
-					<div class="sectionTitle">Related News</div>
+				<div class="sectionTitle">Related News</div>
 				<div id="newsGroup"> </div>
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
