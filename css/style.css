@@ -109,6 +109,11 @@ table{
 	color:#AA0505;
 }
 
+.table td, .table th {
+	padding:10px;
+	vertical-align:top;
+}
+
 .logoBox {
 	margin:20px;
 	text-align: center;
@@ -157,7 +162,7 @@ a{
 
 
 /*Media Queries*/
-@media screen and (max-width:450px) {
+@media screen and (max-width:475px) {
 	.title{
 		font-size:24px;
 	}
