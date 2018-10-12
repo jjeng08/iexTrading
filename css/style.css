@@ -75,6 +75,11 @@ fieldset {
 	width:60px;
 }
 
+#buttons{
+	max-width:400px;
+	text-align:center;
+}
+
 /*DATA DISPLAY*/
 input{
 	border-radius: 3px;
