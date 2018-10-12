@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./css/style.css">
+	<title>IEX Stock Viewer</title>
+</head>
+
+<body>
+	<!-- PAGE BANNER -->
+	<div class="row">
+		<div class="title">IEX Stock Compiler v.1.0</div>
+	</div>
+
+	<!-- STOCK SELECTOR -->
+	<div class="row">	
+		<div class="col-md-12">
+			<!-- SEARCH BAR -->
+			<div class="sectionTitle">Search Stock Symbols</div>
+			<form id="stockForm">
+				<fieldset>
+					<button class="inputBtn" id="deleteStockBtn">Delete</button>
+					<input onkeyup="this.value = this.value.toUpperCase();" type="text" required id="stockInput" placeholder="Enter Symbol (ex: GOOG)">
+					<button class="inputBtn" id="createStockBtn">Add</button>
+				</fieldset>
+			</form>
+			<!-- STOCK BUTTONS -->
+			<div class="buttonBox">
+				<div id="buttons"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- DISPLAY SECTION -->
+	<div class="row">
+		
+		<!-- TITLE AND LOGO -->
+		<div class="col-md-3">
+			<div class="logoBox">
+				<div class="sectionTitle">Corporation</div>
+				<div id="companyName"></div>
+				<div id="imageView"></div>
+			</div>
+		</div>
+		<!-- STOCK DATA -->
+		<div class="col-md-9">
+			<div class="dataBox">
+				<div class="sectionTitle">Stock Data</div>
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Previous Close</th>
+							<th scope="col">Open</th>
+							<th scope="col">Latest Price</th>
+							<th scope="col">52 Week High</th>
+							<th scope="col">52 Week Low</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Insert stock rows here -->
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- NEWS BULLETIN -->
+	<div class="row">
+		<div class="col-md-12">
+			<div class="newsBox">
+				<div class="sectionTitle">Related News</div>
+				<div id="newsGroup"> </div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>
