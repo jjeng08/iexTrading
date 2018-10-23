@@ -1,7 +1,6 @@
 # iexTrading
 
-DESCRIPTION
-This is a single-page application that pulls stock information through the IEX API and displays it in a simple-to-read format.
+SUMMARY: This is a single-page application that pulls stock information through the IEX API and displays it in a simple-to-read format.
 
 NOTE: As this application was created to demonstrate the power of dynamically created buttons, please use the mouse to click on all options: functionality for the "Enter" key has not been added as it would interfere with various features detailed below.
 
@@ -13,7 +12,7 @@ Adding Stock - to add more stocks to list of buttons, simply type in the stock s
 
 Delete Stock - to remove a button from the list, simply type in the stock symbol and press the Delete button to the left of the input bar.
 
-KEY FEATURES
+KEY FEATURES:
 Local Storage - a key feature of this application is that it saves the user's data. By using local storage, a user can create a specific list of stock (i.e. his/her personal portfolio) and have it available every time the application is re-opened.
 
 Stock Validation - the input box has been referenced to the IEX stock index of over eight thousand tradable symbols. If the symbol does not appear in this database, no new button will appear. Similarly, once a stoc has been entered into the button list, the application will prevent a duplicate from being created in order to stop redundancy.
